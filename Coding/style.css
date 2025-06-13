@@ -123,17 +123,62 @@ section.visible {
 }
 
 /*About*/
+.typewriter {
+  overflow: hidden;
+  border-right: 2px solid #00c6ff;
+  white-space: nowrap;
+  animation: typing 3.5s steps(40, end), blink 0.75s step-end infinite;
+  font-size: 1.2em;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto 40px;
+  text-align: center;
+  color: #00c6ff;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink {
+  0%, 100% { border-color: transparent }
+  50% { border-color: #00c6ff }
+}
+
+/*About-Cards */
 .about-card {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 40px;
-  margin-bottom: 80px;
-  background: #1c1c1c;
-  padding: 30px;
-  border-radius: 18px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
   flex-wrap: wrap;
+  margin-bottom: 60px;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease-in-out;
 }
+
+.about-card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.about-card.reverse {
+  flex-direction: row-reverse;
+}
+
+.about-img {
+  width: 320px;
+  border-radius: 16px;
+  box-shadow: 0 0 12px rgba(0, 198, 255, 0.4);
+  transition: transform 0.3s ease;
+}
+
+.about-img:hover {
+  transform: scale(1.05);
+}
+
 
 .about-card.reverse {
   flex-direction: row-reverse;

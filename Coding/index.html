@@ -6,6 +6,53 @@
   <title>Hamza Abdulahi – Bewerbung</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    .about-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3rem;
+      padding: 3rem 1rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .about-card {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeUp 0.7s ease-in-out forwards;
+    }
+
+    .about-card:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .about-card.reverse {
+      flex-direction: row-reverse;
+    }
+
+    .about-img {
+      max-width: 300px;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .about-text {
+      max-width: 600px;
+    }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -26,9 +73,11 @@
   </nav>
 
   <main>
-<section id="about">
+
+    <div class="typewriter">„Cybersecurity ist nicht mein Job – es ist meine Mission.“</div>
+<section id="about" class="about-section">
   <div class="about-card">
-    <img src="dein-bild.jpg" alt="Hamza Abdulahi" class="about-img" />
+    <img src="Bilder/M-Tresh_test.jpg" alt="Hamza Abdulahi" class="about-img" />
     <div class="about-text">
       <h2>Über mich</h2>
       <p>
@@ -39,6 +88,7 @@
   </div>
 
   <div class="about-card reverse">
+    <img src="Bilder/M-Tresh_test.jpg" alt="Hobbys Bild" class="about-img" />
     <div class="about-text">
       <h2>Hobbys</h2>
       <p>
@@ -46,7 +96,28 @@
         Ich liebe es, ständig Neues zu lernen und mich weiterzuentwickeln.
       </p>
     </div>
-    <img src="hobbys.jpg" alt="Hobbys Bild" class="about-img" />
+  </div>
+
+  <div class="about-card">
+    <img src="Bilder/M-Tresh_test.jpg" alt="Erfahrung" class="about-img" />
+    <div class="about-text">
+      <h2>Berufserfahrung</h2>
+      <p>
+        In meiner bisherigen Laufbahn durfte ich an Projekten in der IT-Infrastruktur, in Webentwicklung und Sicherheitsanalysen mitwirken. 
+        Ich arbeite lösungsorientiert und bin sehr teamfähig.
+      </p>
+    </div>
+  </div>
+
+  <div class="about-card reverse">
+    <img src="Bilder/M-Tresh_test.jpg" alt="Ausbildung" class="about-img" />
+    <div class="about-text">
+      <h2>Ausbildung</h2>
+      <p>
+        Informatiker EFZ mit Berufsmatura – spezialisiert auf Applikationsentwicklung. 
+        Ich habe ein breites Wissen von Softwareentwicklung bis Netzwerksicherheit aufgebaut.
+      </p>
+    </div>
   </div>
 </section>
 
@@ -110,9 +181,6 @@
     <span class="impressum"><a href="Impressum.html">Impressum</a></span>
   </div>
 </footer>
-
-
-
 
   <script src="script.js"></script>
 </body>

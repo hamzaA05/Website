@@ -1,3 +1,17 @@
+// About-Cards beim Scrollen einblenden
+const aboutCards = document.querySelectorAll('.about-card');
+
+const aboutObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show');
+      aboutObserver.unobserve(entry.target); // Nur 1x zeigen
+    }
+  });
+}, { threshold: 0.2 });
+
+aboutCards.forEach(card => aboutObserver.observe(card));
+
 // Scroll Fade-in Animation mit IntersectionObserver
 const sections = document.querySelectorAll('section:not(#hero)');
 
@@ -33,4 +47,5 @@ const skillObserver = new IntersectionObserver(entries => {
 }, { threshold: 0.5 });
 
 skillBars.forEach(bar => skillObserver.observe(bar));
+
 
