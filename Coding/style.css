@@ -190,3 +190,90 @@ section.visible {
   transition: width 2s ease;
   border-radius: 5px;
 }
+
+footer {
+  text-align: center;
+  padding: 2rem 1rem;
+  background-color: #0f0f0f;
+  color: #aaa;
+}
+
+.socials {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 1rem;
+}
+
+.social-icon {
+  color: #aaa;
+  font-size: 1.8rem;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.social-icon:hover {
+  color: #00c6ff;
+  text-shadow:
+    0 0 5px #00c6ff,
+    0 0 10px #00c6ff,
+    0 0 20px #00c6ff;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  font-size: 0.95rem;
+}
+
+.footer-bottom a {
+  color: #bbb;
+  text-decoration: none;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.footer-bottom a:hover {
+  color: #00c6ff;
+  text-shadow:
+    0 0 5px #00c6ff,
+    0 0 10px #00c6ff;
+}
+
+.separator {
+  color: #555;
+}
+
+.impressum-main {
+  padding: 20px 20px 60px;
+  min-height: 90vh;
+  text-align: left;  
+  color: white;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.impressum-container {
+  margin-top: 0;          /* weniger Abstand oben */
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;              /* Abstand zwischen Sektionen */
+  padding-bottom: 2rem;   /* Abstand unten */
+}
+
+.impressum-container h1,
+.impressum-container h2 {
+  color: #00c6ff;
+  margin-bottom: 0.5rem;  /* schöner Abstand nach Überschriften */
+}
+
+.impressum-container p,
+.impressum-container address,
+.impressum-container ol {
+  margin-left: 0;         
+  max-width: 600px;       
+  line-height: 1.5;
+  color: #ccc;
+}
+
