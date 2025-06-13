@@ -121,6 +121,48 @@ section.visible {
   opacity: 1;
   transform: translateY(0);
 }
+
+/*About*/
+.about-card {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 80px;
+  background: #1c1c1c;
+  padding: 30px;
+  border-radius: 18px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  flex-wrap: wrap;
+}
+
+.about-card.reverse {
+  flex-direction: row-reverse;
+}
+
+.about-img {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0, 198, 255, 0.3);
+  flex-shrink: 0;
+}
+
+.about-text {
+  flex: 1;
+}
+
+.about-text h2 {
+  color: #00c6ff;
+  margin-bottom: 10px;
+}
+
+.about-text p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #ddd;
+}
+
 /* Skills */
 #skills ul {
   list-style: none;
