@@ -17,3 +17,20 @@ const observer = new IntersectionObserver((entries) => {
 sections.forEach(section => {
   observer.observe(section);
 });
+
+// Skillbar-Füllung animieren beim Scroll
+const skillBars = document.querySelectorAll(".skill-bar");
+
+const skillObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const fill = entry.target.querySelector(".bar-fill");
+      const percent = entry.target.getAttribute("data-percent");
+      fill.style.width = percent + "%";
+      skillObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.5 });
+
+skillBars.forEach(bar => skillObserver.observe(bar));
+

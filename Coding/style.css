@@ -2,12 +2,37 @@
 * {
   box-sizing: border-box;
 }
-body {
-  margin: 0; 
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #121212;
-  color: #eee;
-  line-height: 1.6;
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+header {
+  background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
+  color: #f2f2f2;
+  padding: 100px 20px 60px;
+  text-align: center;
+  border-bottom: 1px solid #333;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+}
+
+header h1 {
+  font-size: 3rem;
+  margin: 0;
+  background: linear-gradient(90deg, #5ad, #2ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 800;
+  text-shadow: 0 2px 20px rgba(90, 170, 255, 0.3);
+}
+
+header p1 {
+  font-size: 1.25rem;
+  color: #bbb;
+  margin-top: 12px;
+  letter-spacing: 0.5px;
+  text-align: center;
 }
 /* Navbar Styles */
 .navbar {
@@ -29,21 +54,34 @@ body {
 .navbar li {
   display: inline;
 }
+
 .navbar a {
   color: #eee;
   text-decoration: none;
   font-weight: 600;
   font-size: 1rem;
-  transition: color 0.3s ease;
-}
-.navbar a:hover,
-.navbar a:focus {
-  color: #5ad;
+  position: relative;
+  background-image: linear-gradient(90deg, #5ad, #2ff);
+  background-size: 200%;
+  background-position: left;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: #eee;
+  transition: background-position 0.4s ease, -webkit-text-fill-color 0.4s ease, text-shadow 0.3s ease;
 }
 
-/* Smooth scroll */
-html {
-  scroll-behavior: smooth;
+.navbar a:hover,
+.navbar a:focus {
+  background-position: right;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 6px #5ad, 0 0 14px #2ff;
+}
+
+body {
+  margin: 0; 
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #121212;
+  color: #eee;
+  line-height: 1.6;
 }
 
 main {
@@ -126,4 +164,29 @@ section.visible {
 #contact p {
   text-align: center;
   font-size: 1.1rem;
+}
+.skill-bar {
+  margin-bottom: 20px;
+}
+
+.skill-bar span {
+  display: block;
+  margin-bottom: 5px;
+  color: #fff;
+  font-weight: bold;
+}
+
+.bar {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  height: 10px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  width: 0%;
+  background: #00c6ff;
+  transition: width 2s ease;
+  border-radius: 5px;
 }
