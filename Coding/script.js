@@ -48,4 +48,43 @@ const skillObserver = new IntersectionObserver(entries => {
 
 skillBars.forEach(bar => skillObserver.observe(bar));
 
+// --- Typewriter-Effekt ---
+const texts = [
+  "Informatiker EFZ",
+  "Cybersecurity-Spezialist",
+  "Webentwickler",
+  "Motiviert & Zielstrebig"
+];
+
+let currentText = 0;
+let charIndex = 0;
+const textElement = document.getElementById("typewriter-text");
+
+function type() {
+  if (charIndex <= texts[currentText].length) {
+    textElement.textContent = texts[currentText].slice(0, charIndex);
+    charIndex++;
+    setTimeout(type, 100);
+  } else {
+    setTimeout(() => {
+      erase();
+    }, 1500);
+  }
+}
+
+function erase() {
+  if (charIndex > 0) {
+    textElement.textContent = texts[currentText].slice(0, charIndex - 1);
+    charIndex--;
+    setTimeout(erase, 50);
+  } else {
+    currentText = (currentText + 1) % texts.length;
+    setTimeout(type, 200);
+  }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  type();
+});
+
 
