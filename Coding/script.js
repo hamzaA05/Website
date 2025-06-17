@@ -87,4 +87,17 @@ document.addEventListener("DOMContentLoaded", () => {
   type();
 });
 
+// Timeline Items beim Scroll einblenden
+const timelineItems = document.querySelectorAll('.timeline-item');
+
+const timelineObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show');
+      timelineObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.3 });
+
+timelineItems.forEach(item => timelineObserver.observe(item));
 
