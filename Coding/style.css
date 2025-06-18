@@ -90,30 +90,17 @@ main {
 }
 
 h1, h2 {
-  font-weight: 700;
-  text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: #00c6ff;
 }
+
 
 p {
   max-width: 600px;
   margin: 0 auto;
 }
 
-/* Hero */
-#hero {
-  text-align: center;
-  padding: 80px 20px 120px;
-}
-
-#hero h1 {
-  font-size: 3rem;
-}
-
-#hero p {
-  font-size: 1.25rem;
-  color: #bbb;
-  margin-top: 6px;
-}
 
 /* Section Fade */
 section {
@@ -319,6 +306,7 @@ section.visible {
   position: relative;
   max-width: 1000px;
   margin: 0 auto;
+  z-index: 0; /* explizit gesetzt */
 }
 
 .timeline::after {
@@ -330,6 +318,7 @@ section.visible {
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
+  z-index: 0; /* Linie ist jetzt über Content aber unter Icons */
 }
 
 .timeline-item {
@@ -339,7 +328,7 @@ section.visible {
   opacity: 0;
   transform: translateY(40px);
   transition: all 0.8s ease;
-  z-index: 2;
+  z-index: 1; /* Content-Karte ist unter Linie und Icon */
 }
 
 .timeline-item.show {
@@ -362,10 +351,10 @@ section.visible {
   top: 15px;
   width: 50px;
   height: 50px;
-  background: white;
+  background: black;
   border: 3px solid #00c6ff;
   border-radius: 50%;
-  z-index: 2;
+  z-index: 10;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -388,7 +377,8 @@ section.visible {
   border-radius: 16px;
   box-shadow: 0 0 20px rgba(0,198,255,0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  z-index: -3;
+  z-index: -1; /* Content bleibt ganz unten */
+  position: relative;
 }
 
 .timeline-content:hover {
@@ -407,7 +397,7 @@ section.visible {
   line-height: 1.6;
 }
 
-/* --- Icon Hover Animation --- */
+/* Icon Hover Animation */
 .timeline-icon:hover {
   transform: scale(1.3) translateY(-8px);
   box-shadow: 0 5px 15px rgba(0,198,255,0.5);
@@ -418,12 +408,97 @@ section.visible {
   animation: flyRocket 1s ease forwards;
 }
 
-@keyframes flyRocket {
-  0% { transform: scale(1.3) translateY(-8px) rotate(0deg); }
-  100% { transform: scale(1.3) translateX(60px) rotate(-15deg); }
+.timeline-icon:hover .rocket-wrapper {
+  animation: flyRocket 0.8s ease forwards;
 }
 
-/* --- Responsive --- */
+.timeline-icon:not(:hover) .rocket-wrapper {
+  animation: fallRocket 0.8s ease forwards;
+}
+
+@keyframes flyRocket {
+  0%   { transform: translateY(0); }
+  100% { transform: translateX(100px) rotate(-20deg); opacity: 0; }
+}
+
+@keyframes fallRocket {
+  from { transform: translateY(-50px); }
+  to   { transform: translateY(0); }
+}
+
+.rocket-wrapper {
+  display: inline-block;
+  padding: 20px;
+ }
+
+ /* Timeline-Icons Basis */
+.timeline-icon i {
+  transition: all 0.3s ease-in-out;
+}
+
+/* Geburt – Bounce beim Hover */
+.timeline-icon.birth-icon:hover i {
+  animation: pop-bounce 0.8s ease-in-out;
+}
+
+/* Schule – Glow beim Hover */
+.timeline-icon.school-icon:hover i {
+  background: linear-gradient(45deg, #4facfe, #00f2fe);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: glow-text 1.2s ease-in-out;
+}
+
+/* Lehre – Typing Glow beim Hover */
+.timeline-icon.code-icon:hover i {
+  color: #0ff;
+  animation: type-glow 1.5s ease-in-out;
+}
+
+/* Animationen */
+@keyframes pop-bounce {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.3); }
+  100% { transform: scale(1); }
+}
+
+@keyframes glow-text {
+  0% { text-shadow: 0 0 0px #00f2fe; }
+  50% { text-shadow: 0 0 20px #00f2fe; }
+  100% { text-shadow: 0 0 0px #00f2fe; }
+}
+
+@keyframes type-glow {
+  0% { text-shadow: 0 0 0px #0ff; transform: scale(1); }
+  50% { text-shadow: 0 0 15px #0ff; transform: scale(1.1); }
+  100% { text-shadow: 0 0 0px #0ff; transform: scale(1); }
+}
+
+.timeline-icon.database-icon:hover i {
+  background: linear-gradient(to top, #0ff 0%, #0ff 50%, transparent 50%, transparent 100%);
+  background-size: 100% 200%;
+  background-position: bottom;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: fill-database 1.5s ease-in-out;
+}
+
+@keyframes fill-database {
+  0% {
+    background-position: bottom;
+    text-shadow: 0 0 0px #0ff;
+  }
+  50% {
+    background-position: top;
+    text-shadow: 0 0 12px #0ff;
+  }
+  100% {
+    background-position: bottom;
+    text-shadow: 0 0 0px #0ff;
+  }
+}
+
+/* Responsive */
 @media screen and (max-width: 768px) {
   .timeline::after {
     left: 8px;
@@ -448,17 +523,87 @@ section.visible {
 }
 
 
+
 /* Kontakt */
-#contact {
+.contact-section {
+  background: #111;
+  color: #eee;
+  padding: 4rem 2rem;
   text-align: center;
-  padding: 40px 20px;
-  max-width: 800px;
+}
+
+.contact-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #00c6ff;
+
+}
+
+.contact-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  max-width: 900px;
   margin: 0 auto;
 }
 
-#contact p {
-  font-size: 1.1rem;
+.contact-info, .contact-side {
+  background: #1a1a1a;
+  border-radius: 1.5rem;
+  padding: 2rem;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.05);
+  border: 1px solid #222;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
+.contact-info:hover, .contact-side:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.3);
+}
+
+.contact-info h3, .contact-side h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #00c6ff;
+}
+
+.contact-info p, .contact-side p {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  color: #ccc;
+}
+
+.contact-info a {
+  color: #00c6ff;
+  text-decoration: none;
+}
+
+.contact-info a:hover {
+  text-decoration: underline;
+  text-shadow: 0 0 6px #0ff;
+}
+
+.contact-button {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.8rem 1.5rem;
+  background: #0ff;
+  color: #000;
+  border-radius: 12px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-button:hover {
+  background: #00cccc;
+  transform: scale(1.05);
+  box-shadow: 0 0 12px #0ff;
+}
+
+
 
 /* Footer */
 footer {
