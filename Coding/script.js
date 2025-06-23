@@ -51,9 +51,10 @@ skillBars.forEach(bar => skillObserver.observe(bar));
 // --- Typewriter-Effekt ---
 const texts = [
   "Informatiker EFZ",
-  "Cybersecurity-Spezialist",
-  "Webentwickler",
-  "Motiviert & Zielstrebig"
+  "Berufsmatura Wirtschaft",
+  "Cool :)",
+  "Motiviert & Zielstrebig",
+  "Verantwortungsbewusst & Teamorientiert"
 ];
 
 let currentText = 0;
